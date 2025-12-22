@@ -11,10 +11,17 @@ import {
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
+import orders from '@/routes/orders';
 import products from '@/routes/products';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, BoxIcon, Folder, LayoutGrid } from 'lucide-react';
+import {
+    ArchiveIcon,
+    BookOpen,
+    BoxIcon,
+    Folder,
+    LayoutGrid,
+} from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -27,6 +34,11 @@ const mainNavItems: NavItem[] = [
         title: 'Produk',
         href: products.index(),
         icon: BoxIcon,
+    },
+    {
+        title: 'Pesanan',
+        href: orders.index(),
+        icon: ArchiveIcon,
     },
 ];
 

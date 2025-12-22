@@ -1,5 +1,7 @@
 import { InertiaLinkProps } from '@inertiajs/react';
 import { type ClassValue, clsx } from 'clsx';
+import { format } from 'date-fns';
+import { id } from 'date-fns/locale';
 import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
@@ -22,4 +24,13 @@ export const formatCurrency = (amount: number): string => {
         style: 'currency',
         currency: 'IDR',
     }).format(amount);
+};
+
+export const formatDate = (
+    date: string | Date,
+    formatStr: string = 'dd MMMM yyyy HH:mm',
+): string => {
+    return format(date, formatStr, {
+        locale: id,
+    });
 };

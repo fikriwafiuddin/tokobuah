@@ -12,6 +12,16 @@ export interface Product {
     image: string;
 }
 
+export interface Order {
+    customer_name: string;
+    whatsapp_number: string;
+    address: string;
+    notes: string;
+    total_amount: number;
+    status: string;
+    created_at: string;
+}
+
 export interface Auth {
     user: User;
 }
