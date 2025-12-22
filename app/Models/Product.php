@@ -7,7 +7,7 @@ use App\Models\OrderItem;
 
 class Product extends Model
 {
-    protected $fillable = ['name', 'price', 'stock', 'discount', 'unit', 'description', 'image'];
+    protected $fillable = ['name', 'price', 'stock', 'discount', 'weight', 'description', 'image'];
 
     public function orderItems()
     {

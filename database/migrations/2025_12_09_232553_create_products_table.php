@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('price');
             $table->integer('discount')->default(0);
             $table->integer('stock')->default(0);
-            $table->string('unit', 10);
+            $table->integer('weight')->default(0);
             $table->text('image');
             $table->text('description');
 
