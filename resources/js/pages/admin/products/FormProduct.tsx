@@ -19,7 +19,7 @@ function FormProduct({ product }: FormProductProps) {
         price: string;
         stock: string;
         discount: string;
-        unit: string;
+        weight: string;
         description: string;
         image: null | File;
     }>({
@@ -27,7 +27,7 @@ function FormProduct({ product }: FormProductProps) {
         price: product?.price.toString() || '',
         stock: product?.stock.toString() || '',
         discount: product?.discount.toString() || '',
-        unit: product?.unit || '',
+        weight: product?.weight.toString() || '',
         description: product?.description || '',
         image: null,
     });
@@ -51,6 +51,7 @@ function FormProduct({ product }: FormProductProps) {
             formData.append('price', data.price);
             formData.append('discount', data.discount);
             formData.append('stock', data.stock);
+            formData.append('weight', data.weight);
             formData.append('description', data.description);
             formData.append('image', data.image as File);
 
@@ -116,14 +117,15 @@ function FormProduct({ product }: FormProductProps) {
                 </div>
 
                 <div>
-                    <Label htmlFor="unit">Unit</Label>
+                    <Label htmlFor="weight">Bobot/Unit (gram)</Label>
                     <Input
-                        id="unit"
-                        name="unit"
-                        value={data.unit}
-                        onChange={(e) => setData('unit', e.target.value)}
+                        type="number"
+                        id="weight"
+                        name="weight"
+                        value={data.weight}
+                        onChange={(e) => setData('weight', e.target.value)}
                     />
-                    <InputError message={errors.unit} />
+                    <InputError message={errors.weight} />
                 </div>
 
                 <div>

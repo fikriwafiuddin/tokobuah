@@ -5,7 +5,7 @@ import { formatCurrency } from '@/lib/utils';
 import { edit, index, show } from '@/routes/products';
 import { BreadcrumbItem, Product } from '@/types';
 import { Head, Link } from '@inertiajs/react';
-import { ArrowLeftIcon, EyeIcon } from 'lucide-react';
+import { ArrowLeftIcon, EditIcon } from 'lucide-react';
 import DeleteProduct from '../DeleteProduct';
 
 const breadcrumbs = (id: number): BreadcrumbItem[] => [
@@ -63,8 +63,10 @@ function ProductShowPage({ product }: ProductShowPageProps) {
                                     <span>: {product.stock}</span>
                                     <span className="font-medium">Diskon</span>
                                     <span>: {product.discount}</span>
-                                    <span className="font-medium">Unit</span>
-                                    <span>: {product.unit}</span>
+                                    <span className="font-medium">
+                                        Bobot/Unit
+                                    </span>
+                                    <span>: {product.weight}</span>
                                 </div>
                                 <div className="text-sm text-muted-foreground">
                                     <span className="font-medium">
@@ -75,7 +77,7 @@ function ProductShowPage({ product }: ProductShowPageProps) {
                                 <div className="flex justify-end gap-2">
                                     <Button asChild>
                                         <Link href={edit(product.id)}>
-                                            <EyeIcon />
+                                            <EditIcon />
                                         </Link>
                                     </Button>
                                     <DeleteProduct id={product.id} />

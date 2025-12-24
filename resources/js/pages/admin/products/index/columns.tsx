@@ -1,6 +1,6 @@
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { formatCurrency } from '@/lib/utils';
+import { formatCurrency, formatWeight } from '@/lib/utils';
 import { edit, show } from '@/routes/products';
 import { Product } from '@/types';
 import { Link } from '@inertiajs/react';
@@ -34,8 +34,9 @@ const columns: ColumnDef<Product>[] = [
         cell: ({ row }) => formatCurrency(row.original.price),
     },
     {
-        accessorKey: 'unit',
-        header: 'Unit',
+        accessorKey: 'weight',
+        header: 'Bobot/Unit',
+        cell: ({ row }) => formatWeight(row.original.weight),
     },
     {
         header: 'Diskon',

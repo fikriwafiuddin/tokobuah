@@ -26,7 +26,7 @@ class ProductRequestCreate extends FormRequest
             'price' => 'required|numeric|min:1',
             'discount' => 'numeric|min:0',
             'stock' => 'integer|min:0',
-            'unit' => 'required|string|min:1|max:10',
+            'weight' => 'required|numeric|min:1',
             'description' => 'string',
             'image' => 'required|file|mimes:png,jpg,png,webp,jpeg|max:2048'
         ];
