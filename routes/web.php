@@ -9,7 +9,7 @@ use Laravel\Fortify\Features;
 
 Route::get('/', [ClientController::class, 'home'])->name('home');
 
-Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
+Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
