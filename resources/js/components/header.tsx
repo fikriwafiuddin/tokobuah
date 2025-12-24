@@ -1,5 +1,6 @@
 import { resolveUrl } from '@/lib/utils';
 import { dashboard, home, login, logout } from '@/routes';
+import { products } from '@/routes/user';
 import { NavItem, SharedData } from '@/types';
 import { Link, router, usePage } from '@inertiajs/react';
 import {
@@ -24,7 +25,7 @@ const navItems: NavItem[] = [
         title: 'Beranda',
     },
     {
-        href: '#',
+        href: products().url,
         title: 'Produk',
     },
     {
@@ -41,6 +42,8 @@ function Header() {
     const { auth } = usePage<SharedData>().props;
     const page = usePage();
     const [openSidebarMobile, setOpenSidebarMobile] = useState(false);
+    console.log(page);
+    console.log(navItems);
 
     const handleLogout = () => {
         router.flushAll();
@@ -58,7 +61,7 @@ function Header() {
                         {navItems.map((item) => (
                             <li
                                 key={item.title}
-                                className={`${page.url.startsWith(resolveUrl(item.href)) ? 'text-primary' : ''}`}
+                                className={`${page.url == item.href ? 'text-primary' : 'hover:text-primary'}`}
                             >
                                 <Link href={item.href}>{item.title}</Link>
                             </li>
