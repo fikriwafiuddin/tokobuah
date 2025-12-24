@@ -8,6 +8,7 @@ use Inertia\Inertia;
 use Laravel\Fortify\Features;
 
 Route::get('/', [ClientController::class, 'home'])->name('home');
+Route::get('/products', [ClientController::class, 'products'])->name('user.products');
 
 Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('dashboard', function () {
