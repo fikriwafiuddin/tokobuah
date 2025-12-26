@@ -1,5 +1,6 @@
 import { resolveUrl } from '@/lib/utils';
 import { dashboard, home, login, logout } from '@/routes';
+import cart from '@/routes/cart';
 import { products } from '@/routes/user';
 import { NavItem, SharedData } from '@/types';
 import { Link, router, usePage } from '@inertiajs/react';
@@ -39,11 +40,9 @@ const navItems: NavItem[] = [
 ];
 
 function Header() {
-    const { auth } = usePage<SharedData>().props;
+    const { auth, cartItemCount } = usePage<SharedData>().props;
     const page = usePage();
     const [openSidebarMobile, setOpenSidebarMobile] = useState(false);
-    console.log(page);
-    console.log(navItems);
 
     const handleLogout = () => {
         router.flushAll();
@@ -75,7 +74,23 @@ function Header() {
                                 </Button>
                             ) : (
                                 <>
-                                    <ShoppingCartIcon className="size-5" />
+                                    <Link
+                                        href={cart.index()}
+                                        className={` ${
+                                            page.url === cart.index().url
+                                                ? 'text-primary'
+                                                : ''
+                                        } relative`}
+                                    >
+                                        <ShoppingCartIcon className="size-5" />
+                                        {cartItemCount > 0 && (
+                                            <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs font-semibold text-white">
+                                                {cartItemCount > 99
+                                                    ? '99+'
+                                                    : cartItemCount}
+                                            </span>
+                                        )}
+                                    </Link>
                                     <DropdownMenu>
                                         <DropdownMenuTrigger className="hidden lg:block">
                                             <UserCircleIcon className="size-5" />

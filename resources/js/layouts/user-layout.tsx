@@ -1,5 +1,6 @@
 import Footer from '@/components/footer';
 import Header from '@/components/header';
+import { Toaster } from '@/components/ui/sonner';
 import { ReactNode } from 'react';
 
 type UserLayoutProps = {
@@ -13,6 +14,7 @@ function UserLayout({ children }: UserLayoutProps) {
             <div>
                 {children}
                 <Footer />
+                <Toaster position="top-center" />
             </div>
         </>
     );

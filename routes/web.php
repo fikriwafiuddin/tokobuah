@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -9,6 +10,10 @@ use Laravel\Fortify\Features;
 
 Route::get('/', [ClientController::class, 'home'])->name('home');
 Route::get('/products', [ClientController::class, 'products'])->name('user.products');
+
+Route::middleware(['auth', 'role:user'])->group(function () {
+    Route::resource('cart', CartController::class);
+});
 
 Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('dashboard', function () {

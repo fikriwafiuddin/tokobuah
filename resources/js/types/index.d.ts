@@ -22,6 +22,12 @@ export interface Order {
     created_at: string;
 }
 
+export interface Cart {
+    product: Product;
+    product_id: number;
+    quantity: number;
+}
+
 export interface Auth {
     user: User;
 }
@@ -48,6 +54,7 @@ export interface SharedData {
     quote: { message: string; author: string };
     auth: Auth;
     sidebarOpen: boolean;
+    cartItemCount: number;
     [key: string]: unknown;
 }
 
